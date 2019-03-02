@@ -54,7 +54,7 @@ cache:
 before_install:
 - export LANG=en_US.UTF-8
 - export CHROME_BIN=google-chrome
-# - export TRAVIS_TAG=$(git tag --points-at HEAD)
+- export TRAVIS_TAG=$(git tag --points-at HEAD)
 - nvm install 8
 - npm install -g cordova
 - mkdir "$ANDROID_HOME/licenses" || true
@@ -73,8 +73,10 @@ before_deploy:
   # - git config --local user.email "YOUR GIT USER EMAIL"
   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   - git tag $TRAVIS_TAG
+  - git tag -l
 deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
+  api_key:
+    secure: $YOUR_API_KEY_ENCRYPTED
   file: "$HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/app-debug.apk"
   skip_cleanup: true
