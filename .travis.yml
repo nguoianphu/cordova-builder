@@ -60,9 +60,6 @@ script:
 - npm run lint
 - npm run test-ci
 - npm run build
-- cordova plugin add cordova-plugin-whitelist
-- cordova plugin ls
-- cordova platform ls
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./build-android.sh ; fi
 deploy:
   provider: releases
