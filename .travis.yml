@@ -1,3 +1,8 @@
+env:
+  global:
+  - JAVA_HOME=/usr/lib/jvm/java-8-oracle
+  - ANDROID_VERSION=26.0.2
+  - BUILD_TOOLS_VERSION=26.0.2
 matrix:
   include:
   - os: linux
@@ -8,8 +13,8 @@ matrix:
       - tools
       - platform-tools
       - tools
-      - build-tools-26.0.2
-      - android-26
+      - build-tools-$BUILD_TOOLS_VERSION
+      - android-$ANDROID_VERSION
       - extra-google-google_play_services
       - extra-google-m2repository
       - extra-android-m2repository
@@ -49,7 +54,7 @@ cache:
 before_install:
 - export LANG=en_US.UTF-8
 - export CHROME_BIN=google-chrome
-- export TRAVIS_TAG=$(git tag --points-at HEAD)
+# - export TRAVIS_TAG=$(git tag --points-at HEAD)
 - nvm install 8
 - npm install -g cordova
 - mkdir "$ANDROID_HOME/licenses" || true
@@ -62,12 +67,14 @@ script:
 # - npm run test-ci
 # - npm run build
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./build-android.sh ; fi
+before_deploy:
+  # Set up git user name and tag this commit
+  # - git config --local user.name "YOUR GIT USER NAME"
+  # - git config --local user.email "YOUR GIT USER EMAIL"
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
 deploy:
   provider: releases
-  api_key: "$GITHUB_OAUTH_TOKEN"
+  api_key: "GITHUB OAUTH TOKEN"
+  file: "$HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/app-debug.apk"
   skip_cleanup: true
-  on:
-    tags: true
-env:
-  global:
-  - JAVA_HOME=/usr/lib/jvm/java-8-oracle
