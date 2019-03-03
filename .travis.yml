@@ -78,3 +78,5 @@ deploy:
     secure: $YOUR_API_KEY_ENCRYPTED
   file: "$HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/${APK_NAME// /}.apk"
   skip_cleanup: true
+  on:
+    all_branches: true
