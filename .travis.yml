@@ -3,7 +3,7 @@ env:
   - JAVA_HOME=/usr/lib/jvm/java-8-oracle
   - ANDROID_VERSION=26.0.2
   - BUILD_TOOLS_VERSION=26.0.2
-  - NODEJS=8
+  - NODEJS=10
 matrix:
   include:
   - os: linux
@@ -66,18 +66,19 @@ script:
 before_deploy:
   # Get Date and Git hash for this build
   - export DATE=$(date +'DATE_%Y_%m_%d_%H%M%S')
-  - export GIT_COMMIT=$(git log --format=%h -1)
+  - export GIT_COMMIT=COMMIT_$(git log --format=%h -1)
   # Get the App info in config.xml
   - export APP_NAME=$(cat www/config.xml | grep \<name\> | cut -d '>' -f2 | cut -d '<' -f1)
   # - export APP_ID=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f2)
   - export APP_VERSION_CURRENT=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f4)
   # - export APP_VERSION=$(echo $APP_VERSION_CURRENT | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
-  - export TRAVIS_TAG=${TRAVIS_TAG:-${APP_NAME// /}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}}
-  - git tag $TRAVIS_TAG
+  - export TRAVIS_TAG=${TRAVIS_TAG:-${APP_NAME}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}}
+  - git tag ${TRAVIS_TAG// /}
   - git tag -l
+  - cp $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/app-debug.apk  $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/${TRAVIS_TAG// /}.apk
 deploy:
   provider: releases
   api_key:
     secure: $YOUR_API_KEY_ENCRYPTED
-  file: "$HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/app-debug.apk"
+  file: "$HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/${TRAVIS_TAG// /}.apk"
   skip_cleanup: true

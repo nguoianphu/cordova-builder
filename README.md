@@ -33,7 +33,7 @@ You can overwrite the www with your HTML5 files. Remember to correct the __www/c
 
 ### Github Release deployment
 
-- Replace ```nguoianphu``` with your account name in the ```.travis.yml```
+- Replace all ```nguoianphu``` with your account name in the ```.travis.yml```, i.e.
 
 ```
 deploy:
