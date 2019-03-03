@@ -29,7 +29,7 @@ Edit the values in ```.travis.yml``` if you want to upgrade Android SDK
  ### The www folder
  is cloned from the Cordova Phonegap template https://github.com/phonegap/phonegap-template-hello-world
  
-You can overwrite the www with your HTML5 files
+You can overwrite the www with your HTML5 files. Remember to correct the __www/config.xml__.
 
 ### Github Release deployment
 
@@ -65,3 +65,10 @@ Go to Travis-ci setting, i.e.        https://travis-ci.org/nguoianphu/cordova-bu
 In the __Environment Variables__ section, add a variable name ```YOUR_API_KEY_ENCRYPTED``` and the value you get from Github step above
 
 ## Let push some thing and check :) 
+
+
+
+### Reference
+
+- https://github.com/samlsso/Calc
+- https://docs.travis-ci.com

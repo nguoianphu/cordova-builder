@@ -16,3 +16,8 @@ cordova plugin ls
 
 echo "Building apk for Android"
 cordova build android
+
+echo "Built the following apk(s):"
+ls -la $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/
+cd ..
+ls -la
