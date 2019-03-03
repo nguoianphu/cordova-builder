@@ -1,4 +1,5 @@
-# Cordova builder on the cloud with Github and Travis-CI
+# Cordova builder
+# on the cloud with Github and Travis-CI
 
 [![Build Status](https://travis-ci.org/nguoianphu/cordova-builder.svg?branch=master)](https://travis-ci.org/nguoianphu/cordova-builder)
 
