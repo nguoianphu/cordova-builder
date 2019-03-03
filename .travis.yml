@@ -58,9 +58,11 @@ before_install:
 - yes | sdkmanager "platforms;android-27"
 # Remove the default www and replace it by your zipped
 - rm -rf www
-- unzip -P $MY_ZIP_PASSWORD www.zip
+- sudo apt-get install p7zip-full
+- 7z x -p${MY_ZIP_PASSWORD} www.zip
+- ls -la
 script:
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./build-android.sh ; fi
+- if [[ -d www && "$TRAVIS_OS_NAME" == "linux" ]]; then ./build-android.sh ; fi
 before_deploy:
   # Get Date and Git hash for this build
   - export DATE=$(date +'DATE_%Y_%m_%d_%H%M%S')
