@@ -1,0 +1,116 @@
+{"frames": [
+
+{
+	"filename": "01.png",
+	"frame": {"x":2,"y":2,"w":67,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":67,"h":68},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "02.png",
+	"frame": {"x":71,"y":2,"w":67,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":2,"w":67,"h":70},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "03.png",
+	"frame": {"x":140,"y":2,"w":65,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":2,"w":65,"h":70},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "04.png",
+	"frame": {"x":207,"y":2,"w":67,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":67,"h":72},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "05.png",
+	"frame": {"x":276,"y":2,"w":75,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":75,"h":70},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "06.png",
+	"frame": {"x":353,"y":2,"w":67,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":67,"h":72},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "07.png",
+	"frame": {"x":422,"y":2,"w":67,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":2,"w":67,"h":68},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "08.png",
+	"frame": {"x":491,"y":2,"w":67,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":2,"w":67,"h":70},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "09.png",
+	"frame": {"x":2,"y":76,"w":65,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":2,"w":65,"h":70},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "10.png",
+	"frame": {"x":69,"y":76,"w":67,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":1,"w":67,"h":72},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "11.png",
+	"frame": {"x":138,"y":76,"w":75,"h":70},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":75,"h":70},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "12.png",
+	"frame": {"x":215,"y":76,"w":67,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":1,"w":67,"h":72},
+	"sourceSize": {"w":75,"h":74}
+},
+{
+	"filename": "dewgong_icon.png",
+	"frame": {"x":284,"y":76,"w":296,"h":404},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":2,"w":296,"h":404},
+	"sourceSize": {"w":300,"h":406}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "dewgong.png",
+	"format": "RGBA8888",
+	"size": {"w":582,"h":482},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e7196ea8ee0917cddff9da4763c1b72b$"
+}
+}

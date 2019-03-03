@@ -1,0 +1,180 @@
+{"frames": [
+
+{
+	"filename": "01.png",
+	"frame": {"x":2,"y":2,"w":60,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":60,"h":50},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "02.png",
+	"frame": {"x":64,"y":2,"w":50,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":2,"w":50,"h":52},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "03.png",
+	"frame": {"x":116,"y":2,"w":56,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":9,"w":56,"h":48},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "04.png",
+	"frame": {"x":174,"y":2,"w":48,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":16,"w":48,"h":48},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "05.png",
+	"frame": {"x":224,"y":2,"w":54,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":13,"w":54,"h":50},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "06.png",
+	"frame": {"x":280,"y":2,"w":54,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":9,"w":54,"h":52},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "07.png",
+	"frame": {"x":336,"y":2,"w":60,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":6,"w":60,"h":54},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "08.png",
+	"frame": {"x":398,"y":2,"w":50,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":50,"h":54},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "09.png",
+	"frame": {"x":2,"y":58,"w":60,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":60,"h":50},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "10.png",
+	"frame": {"x":64,"y":58,"w":50,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":2,"w":50,"h":52},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "11.png",
+	"frame": {"x":116,"y":58,"w":56,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":9,"w":56,"h":48},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "12.png",
+	"frame": {"x":174,"y":58,"w":48,"h":48},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":16,"w":48,"h":48},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "13.png",
+	"frame": {"x":224,"y":58,"w":54,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":13,"w":54,"h":50},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "14.png",
+	"frame": {"x":280,"y":58,"w":54,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":9,"w":54,"h":52},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "15.png",
+	"frame": {"x":336,"y":58,"w":60,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":6,"w":60,"h":54},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "16.png",
+	"frame": {"x":398,"y":58,"w":50,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":4,"w":50,"h":54},
+	"sourceSize": {"w":74,"h":66}
+},
+{
+	"filename": "17.png",
+	"frame": {"x":450,"y":58,"w":56,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
+	"sourceSize": {"w":56,"h":56}
+},
+{
+	"filename": "18.png",
+	"frame": {"x":2,"y":116,"w":54,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":54,"h":54},
+	"sourceSize": {"w":56,"h":56}
+},
+{
+	"filename": "19.png",
+	"frame": {"x":58,"y":116,"w":56,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":56},
+	"sourceSize": {"w":56,"h":56}
+},
+{
+	"filename": "20.png",
+	"frame": {"x":116,"y":116,"w":54,"h":54},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":54,"h":54},
+	"sourceSize": {"w":56,"h":56}
+},
+{
+	"filename": "goldfish_icon.png",
+	"frame": {"x":172,"y":116,"w":296,"h":267},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":3,"w":296,"h":267},
+	"sourceSize": {"w":300,"h":273}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "goldfish.png",
+	"format": "RGBA8888",
+	"size": {"w":508,"h":385},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:6debcd9f25653e4aaae520ded2e28c3e$"
+}
+}

@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "01.png",
+	"frame": {"x":2,"y":2,"w":118,"h":110},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":21,"w":118,"h":110},
+	"sourceSize": {"w":150,"h":150}
+},
+{
+	"filename": "02.png",
+	"frame": {"x":122,"y":2,"w":118,"h":114},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":21,"w":118,"h":114},
+	"sourceSize": {"w":150,"h":150}
+},
+{
+	"filename": "03.png",
+	"frame": {"x":2,"y":118,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150}
+},
+{
+	"filename": "04.png",
+	"frame": {"x":2,"y":270,"w":150,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":150},
+	"sourceSize": {"w":150,"h":150}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "ballopening.png",
+	"format": "RGBA8888",
+	"size": {"w":242,"h":422},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ef3d7f7257f08036a52378b41974d3a5$"
+}
+}

@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "bg.png",
+	"frame": {"x":2,"y":2,"w":640,"h":832},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":832},
+	"sourceSize": {"w":640,"h":832}
+},
+{
+	"filename": "creditbg.png",
+	"frame": {"x":2,"y":836,"w":500,"h":306},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":6,"w":500,"h":306},
+	"sourceSize": {"w":512,"h":322}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "bggroup.png",
+	"format": "RGBA8888",
+	"size": {"w":644,"h":1144},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:dba273df59fffc994b4c0e1ba676e148$"
+}
+}

@@ -1,0 +1,116 @@
+{"frames": [
+
+{
+	"filename": "01.png",
+	"frame": {"x":2,"y":2,"w":62,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":6,"w":62,"h":59},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "02.png",
+	"frame": {"x":66,"y":2,"w":54,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":7,"w":54,"h":59},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "03.png",
+	"frame": {"x":122,"y":2,"w":74,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w":74,"h":61},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "04.png",
+	"frame": {"x":198,"y":2,"w":62,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":12,"y":2,"w":62,"h":59},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "05.png",
+	"frame": {"x":262,"y":2,"w":58,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":4,"w":58,"h":59},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "06.png",
+	"frame": {"x":322,"y":2,"w":62,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":6,"w":62,"h":59},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "07.png",
+	"frame": {"x":2,"y":65,"w":54,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":7,"w":54,"h":59},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "08.png",
+	"frame": {"x":58,"y":65,"w":74,"h":61},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w":74,"h":61},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "09.png",
+	"frame": {"x":134,"y":65,"w":62,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":62,"h":59},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "10.png",
+	"frame": {"x":198,"y":65,"w":58,"h":59},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":58,"h":59},
+	"sourceSize": {"w":74,"h":69}
+},
+{
+	"filename": "11.png",
+	"frame": {"x":258,"y":65,"w":62,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":62,"h":77},
+	"sourceSize": {"w":62,"h":77}
+},
+{
+	"filename": "12.png",
+	"frame": {"x":2,"y":144,"w":87,"h":71},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":87,"h":71},
+	"sourceSize": {"w":87,"h":71}
+},
+{
+	"filename": "beedrill_icon.png",
+	"frame": {"x":91,"y":144,"w":274,"h":312},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":274,"h":312},
+	"sourceSize": {"w":274,"h":312}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "beedrill.png",
+	"format": "RGBA8888",
+	"size": {"w":386,"h":458},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7b2bcbb7b5dd972b674b2041d37b941c$"
+}
+}

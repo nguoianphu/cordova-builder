@@ -1,0 +1,124 @@
+{"frames": [
+
+{
+	"filename": "button.png",
+	"frame": {"x":90,"y":253,"w":92,"h":97},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":92,"h":97},
+	"sourceSize": {"w":92,"h":97}
+},
+{
+	"filename": "buttonlock.png",
+	"frame": {"x":2,"y":352,"w":93,"h":98},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":98},
+	"sourceSize": {"w":93,"h":98}
+},
+{
+	"filename": "credit.png",
+	"frame": {"x":158,"y":83,"w":76,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":79},
+	"sourceSize": {"w":76,"h":79}
+},
+{
+	"filename": "home.png",
+	"frame": {"x":158,"y":164,"w":86,"h":87},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":87},
+	"sourceSize": {"w":86,"h":87}
+},
+{
+	"filename": "menu.png",
+	"frame": {"x":80,"y":164,"w":76,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":79},
+	"sourceSize": {"w":76,"h":79}
+},
+{
+	"filename": "moregame.png",
+	"frame": {"x":2,"y":164,"w":76,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":79},
+	"sourceSize": {"w":76,"h":79}
+},
+{
+	"filename": "mute.png",
+	"frame": {"x":2,"y":83,"w":76,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":79},
+	"sourceSize": {"w":76,"h":79}
+},
+{
+	"filename": "pause.png",
+	"frame": {"x":80,"y":83,"w":76,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":79},
+	"sourceSize": {"w":76,"h":79}
+},
+{
+	"filename": "play.png",
+	"frame": {"x":97,"y":352,"w":104,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":108},
+	"sourceSize": {"w":104,"h":108}
+},
+{
+	"filename": "play2.png",
+	"frame": {"x":2,"y":253,"w":86,"h":89},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":86,"h":89},
+	"sourceSize": {"w":86,"h":89}
+},
+{
+	"filename": "restart.png",
+	"frame": {"x":62,"y":2,"w":76,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":79},
+	"sourceSize": {"w":76,"h":79}
+},
+{
+	"filename": "sound.png",
+	"frame": {"x":140,"y":2,"w":76,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":79},
+	"sourceSize": {"w":76,"h":79}
+},
+{
+	"filename": "star.png",
+	"frame": {"x":30,"y":2,"w":30,"h":29},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":29},
+	"sourceSize": {"w":30,"h":29}
+},
+{
+	"filename": "starblue.png",
+	"frame": {"x":2,"y":2,"w":26,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":26,"h":24},
+	"sourceSize": {"w":26,"h":24}
+}],
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "buttonsgroup.png",
+	"format": "RGBA8888",
+	"size": {"w":246,"h":462},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4918c2998ef53781471798a27f203050$"
+}
+}
