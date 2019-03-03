@@ -10,7 +10,6 @@ cordova platforms ls
 
 echo "Adding Plugins"
 cordova plugin add cordova-plugin-whitelist
-cordova plugin add cordova-plugin-media
 cordova plugin ls
 
 echo "Building apk for Android"
