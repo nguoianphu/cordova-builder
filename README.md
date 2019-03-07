@@ -74,6 +74,16 @@ git checkout -b password origin/password
 
 Now zipping your ```www``` __private__ folder to the ```www.zip``` with a password, e.g ```MyP44ssw0rd```
 
+```
+zip -er www.zip www
+```
+
+or providing your password in the command
+
+```
+zip -P MyP44ssw0rd -r www.zip www
+```
+
 Put the ```www.zip``` into the repo
 
 Add the password ```MyP44ssw0rd``` to Travis-CI
