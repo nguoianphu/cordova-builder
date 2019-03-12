@@ -65,7 +65,7 @@ script:
 - if [[ -d www && "$TRAVIS_OS_NAME" == "linux" ]]; then ./build-android.sh ; fi
 before_deploy:
   # Get Date and Git hash for this build
-  - export BRANCH=$(git branch | grep \* | cut -d ' ' -f2)
+  - export BRANCH=$(git rev-parse --abbrev-ref HEAD)
   - export DATE=$(date +'DATE_%Y_%m_%d_%H%M%S')
   - export GIT_COMMIT=COMMIT_$(git log --format=%h -1)
   # Get the App info in config.xml
