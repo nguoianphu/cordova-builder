@@ -7,10 +7,11 @@ npm install @capacitor/core @capacitor/cli --save
 npx cap add android
 npx cap sync
 npx cap copy
+npx cap open
 
 echo "Build Android apks"
-./gradlew tasks
-./gradlew assembleDebug
+gradle tasks
+gradle assembleDebug
 
 echo "Built the following apk(s):"
 find . -name '*.apk'
