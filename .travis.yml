@@ -51,7 +51,6 @@ before_install:
 - export LANG=en_US.UTF-8
 - export CHROME_BIN=google-chrome
 - nvm install $NODEJS
-- npm install -g cordova
 - mkdir "$ANDROID_HOME/licenses" || true
 - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
 - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
@@ -71,11 +70,11 @@ before_deploy:
   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   - git tag ${TRAVIS_TAG// /}
   - git tag -l
-  - cp $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/app-debug.apk  $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/${APK_NAME// /}.apk
+#  - cp $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/app-debug.apk  $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/${APK_NAME// /}.apk
 deploy:
   provider: releases
   api_key:
-    secure: $YOUR_API_KEY_ENCRYPTED
+    secure: $YOUR_API_KEY_ENCRYPTED1
   file: "$HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/${APK_NAME// /}.apk"
   skip_cleanup: true
   on:

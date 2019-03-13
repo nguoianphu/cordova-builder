@@ -2,20 +2,15 @@
 
 set -e
 
-cd www
+echo "Set up Capacitor"
+npm install @capacitor/core @capacitor/cli --save
+npx cap add android
+npx cap sync
+npx cap copy
 
-echo "Adding Platforms"
-cordova platform add android
-cordova platforms ls
-
-echo "Adding Plugins"
-cordova plugin add cordova-plugin-whitelist
-cordova plugin ls
-
-echo "Building apk for Android"
-cordova build android
+echo "Build Android apks"
+./gradlew tasks
+./gradlew assembleDebug
 
 echo "Built the following apk(s):"
-ls -la $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/
-cd ..
-ls -la
+find . -name '*.apk'
