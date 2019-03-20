@@ -62,10 +62,12 @@ In the __Environment Variables__ section, add a variable name ```YOUR_API_KEY_EN
 
  ### The www folder
  is cloned from the Cordova Phonegap template https://github.com/phonegap/phonegap-template-hello-world
- 
+
 You can overwrite the www with your HTML5 files. Remember to correct the __www/config.xml__.
 
 Don't want people get your __private__ HTML5?
+
+#### Wait, these steps are just for fun. We can extract ther .APK files and get the www :)
 
 ```
 git fetch --all
