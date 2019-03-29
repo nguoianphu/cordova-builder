@@ -4,18 +4,21 @@ set -e
 
 cd www
 
+phonegap version
+
 echo "Adding Platforms"
-cordova platform add android
-cordova platforms ls
+phonegap install android
+
 
 echo "Adding Plugins"
-cordova plugin add cordova-plugin-whitelist
-cordova plugin ls
+phonegap local plugin list
 
 echo "Building apk for Android"
-cordova build android
+phonegap build android
+
+cd ..
+pwd
 
 echo "Built the following apk(s):"
-ls -la $HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/
-cd ..
 ls -la
+ls -la platforms/android/build/outputs/apk/
