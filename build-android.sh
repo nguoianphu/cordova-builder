@@ -6,19 +6,15 @@ cd www
 
 phonegap version
 
-# echo "Adding Platforms"
-# phonegap install android
-
-
 echo "Adding Plugins"
-phonegap local plugin list
+phonegap plugin list
 
 echo "Building apk for Android"
-phonegap local build android
+phonegap build android --release
 
 cd ..
 pwd
-
+export
 echo "Built the following apk(s):"
 ls -la
-ls -la platforms/android/app/build/outputs/apk/debug/
+ls -la platforms/android/app/build/outputs/apk/
