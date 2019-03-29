@@ -72,7 +72,8 @@ before_deploy:
   # - export APP_ID=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f2)
   - export APP_VERSION_CURRENT=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f4)
   # - export APP_VERSION=$(echo $APP_VERSION_CURRENT | awk -F. -v OFS=. 'NF==1{print ++$NF}; NF>1{if(length($NF+1)>length($NF))$(NF-1)++; $NF=sprintf("%0*d", length($NF), ($NF+1)%(10^length($NF))); print}')
-  - export APK_NAME=${TRAVIS_TAG:-${APP_NAME}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}}
+  - export APK_NAME=${APP_NAME}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}
+  - export APK_NAME=${APK_NAME// /}
   # - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   - export TRAVIS_TAG=${TRAVIS_TAG:-${APK_NAME}}
   - git tag ${TRAVIS_TAG// /}
