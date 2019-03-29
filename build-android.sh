@@ -12,11 +12,11 @@ echo "Adding Plugins"
 cordova plugin ls
 
 echo "Building apk for Android"
-cordova build android --release
+cordova build android
 
 echo "Built the following apk(s):"
 # app-release-unsigned.apk
-ls -la $TRAVIS_BUILD_DIR/platforms/android/app/build/outputs/apk/release
+ls -la $TRAVIS_BUILD_DIR/platforms/android/app/build/outputs/apk/debug
 
 cd ..
 # cd $TRAVIS_BUILD_DIR
