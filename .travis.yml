@@ -77,7 +77,7 @@ before_deploy:
   - export TRAVIS_TAG=${TRAVIS_TAG:-${APK_NAME}}
   - git tag ${TRAVIS_TAG// /}
   - git tag -l
-  - cp $TRAVIS_BUILD_DIR/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
+  - cp $TRAVIS_BUILD_DIR/platforms/android/app/build/outputs/apk/debug/app-debug.apk $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
 deploy:
   provider: releases
   api_key:
