@@ -19,4 +19,5 @@ cd $TRAVIS_BUILD_DIR
 # TRAVIS_REPO_SLUG="nguoianphu/cordova-builder"
 
 echo "Built the following apk(s):"
+# app-release-unsigned.apk
 ls -la platforms/android/app/build/outputs/apk/release
