@@ -5,11 +5,11 @@ set -e
 cd www
 
 echo "Adding Platforms"
+cordova plugin rm cordova-plugin-compat --force
 cordova platform add android
 cordova platforms ls
 
 echo "Adding Plugins"
-cordova plugin add cordova-plugin-whitelist
 cordova plugin ls
 
 echo "Building apk for Android"
