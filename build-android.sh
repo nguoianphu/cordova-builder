@@ -23,10 +23,21 @@ ls -la
 echo "Signing an App"
 
 echo "Generate the keytool"
-keytool -genkey -v -keystore android.keystore -alias android-app-key -keyalg RSA -keysize 2048 -validity 10000 -storepass ${MY_ZIP_PASSWORD} -noprompt
+#keytool -genkey -v -keystore android.keystore -alias android-app-key -keyalg RSA -keysize 2048 -validity 10000 -storepass ${MY_ZIP_PASSWORD} -noprompt
+keytool -genkey -v -noprompt \
+ -alias android-app-key \
+ -keystore android.keystore \
+ -keyalg RSA -keysize 2048 -validity 10000 \
+ -storepass ${MY_ZIP_PASSWORD} \
+ -keypass ${MY_ZIP_PASSWORD} \
+ -dname "CN=play.nguoianphu.com, OU=ID, O=NGUOIANPHU, L=HOCHIMINH, S=HOCHIMINH, C=VN"
 
 echo "Sign the APK with the key we just created"
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore android.keystore app-release-unsigned.apk android-app-key -storepass ${MY_ZIP_PASSWORD} 
+jarsigner -verbose \
+    -sigalg SHA1withRSA \
+    -digestalg SHA1 \
+    -storepass ${MY_ZIP_PASSWORD} \
+    -keystore android.keystore app-release-unsigned.apk android-app-key
 
 echo "Optimize the APK file with the zipalign tool and also rename it to reflect the signing."
 sudo apt install zipalign -y
