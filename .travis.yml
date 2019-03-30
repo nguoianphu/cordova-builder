@@ -1,8 +1,8 @@
 env:
   global:
   - JAVA_HOME=/usr/lib/jvm/java-8-oracle
-  - ANDROID_VERSION=26.0.2
-  - BUILD_TOOLS_VERSION=26.0.2
+  - ANDROID_VERSION=28.0.3
+  - BUILD_TOOLS_VERSION=28.0.3
   - NODEJS=10
 matrix:
   include:
