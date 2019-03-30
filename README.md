@@ -29,17 +29,6 @@ Edit the values in ```.travis.yml``` if you want to upgrade Android SDK
 
 ### Github Release deployment
 
-- Replace all ```nguoianphu``` with your account name in the ```.travis.yml```, i.e.
-
-```
-deploy:
-  provider: releases
-  api_key:
-    secure: $YOUR_API_KEY_ENCRYPTED
-  file: "$HOME/build/nguoianphu/cordova-builder/platforms/android/app/build/outputs/apk/debug/app-debug.apk"
-  skip_cleanup: true
-```
-
 - Generate a new __Personal access tokens__
 
 Go to https://github.com/settings/tokens/new
