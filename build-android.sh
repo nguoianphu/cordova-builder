@@ -43,3 +43,5 @@ echo "Optimize the APK file with the zipalign tool and also rename it to reflect
 cd /usr/local/android-sdk/build-tools/${BUILD_TOOLS_VERSION}/
 ./zipalign -v 4 $TRAVIS_BUILD_DIR/app-release-unsigned.apk $TRAVIS_BUILD_DIR/app-release.apk
 ls -la
+cd $TRAVIS_BUILD_DIR/
+ls -la
