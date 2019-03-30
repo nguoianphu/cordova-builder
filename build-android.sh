@@ -40,7 +40,5 @@ jarsigner -verbose \
     -keystore android.keystore app-release-unsigned.apk android-app-key
 
 echo "Optimize the APK file with the zipalign tool and also rename it to reflect the signing."
-cp /usr/local/android-sdk/build-tools/${BUILD_TOOLS_VERSION}/zipalign .
-sudo chmod +x zipalign
-./zipalign -v 4 app-release-unsigned.apk app-release.apk
+./usr/local/android-sdk/build-tools/${BUILD_TOOLS_VERSION}/zipalign -v 4 app-release-unsigned.apk app-release.apk
 ls -la
