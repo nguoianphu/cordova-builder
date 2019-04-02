@@ -83,7 +83,10 @@ deploy:
   provider: releases
   api_key:
     secure: $YOUR_API_KEY_ENCRYPTED
-  file: "$TRAVIS_BUILD_DIR/${APK_NAME// /}.apk"
+  file:
+    - "$TRAVIS_BUILD_DIR/${APK_NAME// /}.apk"
+    - "$TRAVIS_BUILD_DIR/my-android-release-key.jks"
+    - "$TRAVIS_BUILD_DIR/my-android-release-upload-certificat.pem"
   skip_cleanup: true
   on:
     all_branches: true
