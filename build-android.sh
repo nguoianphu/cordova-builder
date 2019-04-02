@@ -60,8 +60,9 @@ echo "Sign your APK with your private key using apksigner"
 ./apksigner sign \
     --ks $TRAVIS_BUILD_DIR/my-android-release-key.jks \
     --ks-key-alias my-android-release-key \
-    --ks-pass ${MY_ZIP_PASSWORD} \
-    --key-pass ${MY_ZIP_PASSWORD} \
+    --ks-pass pass:${MY_ZIP_PASSWORD} \
+    --key-pass pass:${MY_ZIP_PASSWORD} \
+    --cert $TRAVIS_BUILD_DIR/my-android-release-upload-certificat.pem \
     --out $TRAVIS_BUILD_DIR/app-release.apk \
     $TRAVIS_BUILD_DIR/app-release-unsigned-aligned.apk
 
