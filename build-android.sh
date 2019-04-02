@@ -35,7 +35,9 @@ keytool -genkey -v -noprompt \
  
  
 echo "Export the certificate for the upload key to PEM format"
-keytool -export -rfc \
+keytool -export -rfc -v -noprompt \
+    -storepass ${MY_ZIP_PASSWORD} \
+    -keypass ${MY_ZIP_PASSWORD} \
     -keystore $TRAVIS_BUILD_DIR/my-android-release-key.jks \
     -alias my-android-release-key-upload \
     -file $TRAVIS_BUILD_DIR/my-android-release-upload-certificat.pem
@@ -61,7 +63,10 @@ echo "Sign your APK with your private key using apksigner"
     $TRAVIS_BUILD_DIR/app-release-unsigned-aligned.apk
 
 echo "Verify that your APK is signed"
-./apksigner verify $TRAVIS_BUILD_DIR/app-release.apk
+echo "To confirm that an APK's signature \
+        will be verified successfully \
+        on all versions of the Android platform supported by the APK"
+./apksigner verify --verbose --print-certs $TRAVIS_BUILD_DIR/app-release.apk
 
 cd $TRAVIS_BUILD_DIR/
 ls -la
