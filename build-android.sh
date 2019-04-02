@@ -39,7 +39,7 @@ keytool -export -rfc -v -noprompt \
     -storepass ${MY_ZIP_PASSWORD} \
     -keypass ${MY_ZIP_PASSWORD} \
     -keystore $TRAVIS_BUILD_DIR/my-android-release-key.jks \
-    -alias my-android-release-key-upload \
+    -alias my-android-release-key \
     -file $TRAVIS_BUILD_DIR/my-android-release-upload-certificat.pem
 
 # jarsigner -verbose \
