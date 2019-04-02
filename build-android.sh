@@ -59,6 +59,9 @@ echo "Align the unsigned APK using zipalign"
 echo "Sign your APK with your private key using apksigner"
 ./apksigner sign \
     --ks $TRAVIS_BUILD_DIR/my-android-release-key.jks \
+    --ks-key-alias my-android-release-key \
+    --ks-pass env:${MY_ZIP_PASSWORD} \
+    --key-pass env:${MY_ZIP_PASSWORD} \
     --out $TRAVIS_BUILD_DIR/app-release.apk \
     $TRAVIS_BUILD_DIR/app-release-unsigned-aligned.apk
 
