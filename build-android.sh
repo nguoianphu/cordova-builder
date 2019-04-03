@@ -3,6 +3,13 @@
 echo "Exit immediately if a command exits with a non-zero status."
 set -e
 
+
+echo "Remove the default www and replace it by your zipped"
+rm -rf www | true
+sudo apt-get install -y p7zip-full
+7z x -p${MY_ZIP_PASSWORD} www.zip
+ls -la
+
 cd www
 
 echo "Adding Platforms"
@@ -22,13 +29,14 @@ cd $TRAVIS_BUILD_DIR
 ls -la
 
 echo "Signing an App"
+mkdir -p $TRAVIS_BUILD_DIR/keys
 
 echo "Generate a Private Certificate by keytool"
 echo "https://developer.android.com/studio/build/building-cmdline#sign_cmdline"
 
 keytool -genkey -v -noprompt \
  -alias my-android-release-key \
- -keystore $TRAVIS_BUILD_DIR/my-android-release-key.jks \
+ -keystore $TRAVIS_BUILD_DIR/keys/my-android-release-key.jks \
  -keyalg RSA -keysize 2048 -validity 10000 \
  -storepass ${MY_ZIP_PASSWORD} \
  -keypass ${MY_ZIP_PASSWORD} \
@@ -39,9 +47,9 @@ echo "Export the certificate for the upload key to PEM format"
 keytool -export -rfc -v -noprompt \
     -storepass ${MY_ZIP_PASSWORD} \
     -keypass ${MY_ZIP_PASSWORD} \
-    -keystore $TRAVIS_BUILD_DIR/my-android-release-key.jks \
+    -keystore $TRAVIS_BUILD_DIR/keys/my-android-release-key.jks \
     -alias my-android-release-key \
-    -file $TRAVIS_BUILD_DIR/my-android-release-upload-certificat.pem
+    -file $TRAVIS_BUILD_DIR/keys/my-android-release-upload-certificat.pem
 
 # jarsigner -verbose \
 #     -sigalg SHA1withRSA \
@@ -59,7 +67,7 @@ echo "Align the unsigned APK using zipalign"
 
 echo "Sign your APK with your private key using apksigner"
 ./apksigner sign \
-    --ks $TRAVIS_BUILD_DIR/my-android-release-key.jks \
+    --ks $TRAVIS_BUILD_DIR/keys/my-android-release-key.jks \
     --ks-key-alias my-android-release-key \
     --ks-pass pass:${MY_ZIP_PASSWORD} \
     --key-pass pass:${MY_ZIP_PASSWORD} \
@@ -74,3 +82,6 @@ echo "To confirm that an APK's signature \
 
 cd $TRAVIS_BUILD_DIR/
 ls -la
+
+echo "zip key and certificate with password"
+7z a -tzip -p${MY_ZIP_PASSWORD} keys.zip -r keys
