@@ -2,6 +2,8 @@
 
 echo "Exit immediately if a command exits with a non-zero status."
 set -e
+echo "Don't print all commands"
+set +x
 
 
 echo "Remove the default www and replace it by your zipped"
@@ -14,7 +16,7 @@ cd www
 
 echo "Adding Platforms"
 cordova platform add android
-# cordova platforms ls
+cordova platforms ls
 
 echo "Adding Plugins"
 cordova plugin add cordova-plugin-whitelist
@@ -28,7 +30,7 @@ cp -R $TRAVIS_BUILD_DIR/platforms/android/app/build/outputs/apk/release/* $TRAVI
 cd $TRAVIS_BUILD_DIR
 ls -la
 
-echo "Signing an App"
+echo "Signing our apk"
 mkdir -p $TRAVIS_BUILD_DIR/keys
 
 echo "Generate a Private Certificate by keytool"
@@ -74,8 +76,8 @@ echo "Sign your APK with your private key using apksigner"
     --out $TRAVIS_BUILD_DIR/app-release.apk \
     $TRAVIS_BUILD_DIR/app-release-unsigned-aligned.apk
 
-echo "Verify that your APK is signed"
-echo "To confirm that an APK's signature \
+echo "Verify that your APK is signed \
+        to confirm that an APK's signature \
         will be verified successfully \
         on all versions of the Android platform supported by the APK"
 ./apksigner verify --verbose --print-certs $TRAVIS_BUILD_DIR/app-release.apk
