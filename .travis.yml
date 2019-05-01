@@ -4,7 +4,7 @@ env:
   - ANDROID_VERSION=28.0.3
   - BUILD_TOOLS_VERSION=28.0.3
   - NODEJS=10
-  - CORDOVA_CLI=8.1.2
+  - CORDOVA_CLI=latest
 matrix:
   include:
   - os: linux
