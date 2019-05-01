@@ -19,6 +19,17 @@ cordova platform add android
 cordova platforms ls
 
 echo "Adding Plugins"
+cordova plugin add cordova-plugin-browsersync
+cordova plugin add cordova-plugin-device
+cordova plugin add cordova-plugin-exclude-files
+cordova plugin add cordova-plugin-play-games-services
+cordova plugin add cordova-plugin-vibration
+cordova plugin add cordova-plugin-whitelist
+cordova plugin add cordova-admob-plus
+cordova plugin add es6-promise-plugin
+cordova plugin add cordova-plugin-screen-orientation
+cordova plugin add cordova-plugin-market
+cordova plugin add cordova-plugin-x-socialsharing
 cordova plugin ls
 
 echo "Building apk for Android"
