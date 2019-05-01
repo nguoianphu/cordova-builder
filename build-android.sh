@@ -52,12 +52,6 @@ keytool -export -rfc -v -noprompt \
     -alias my-android-release-key \
     -file $TRAVIS_BUILD_DIR/keys/my-android-release-upload-certificat.pem
 
-# jarsigner -verbose \
-#     -sigalg SHA1withRSA \
-#     -digestalg SHA1 \
-#     -storepass ${MY_ZIP_PASSWORD} \
-#     -keystore android.keystore app-release-unsigned.apk android-app-key
-
 echo "Sign the APK with the key we just created"
 cd /usr/local/android-sdk/build-tools/${BUILD_TOOLS_VERSION}/
 
