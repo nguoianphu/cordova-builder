@@ -19,7 +19,7 @@ cordova platform add android
 cordova platforms ls
 
 echo "Adding Plugins"
-cordova plugin add cordova-plugin-browsersync
+# cordova plugin add cordova-plugin-browsersync
 cordova plugin add cordova-plugin-device
 cordova plugin add cordova-plugin-exclude-files
 cordova plugin add cordova-plugin-play-games-services
