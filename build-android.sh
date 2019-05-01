@@ -15,6 +15,7 @@ ls -la
 cd www
 
 echo "Adding Platforms"
+cordova platform rm android || true
 cordova platform add android
 cordova platforms ls
 
