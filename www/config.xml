@@ -3,7 +3,8 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget     id="com.phonegap.helloworld"    version="1.0.0"
             xmlns     = "http://www.w3.org/ns/widgets"
-            xmlns:gap = "http://phonegap.com/ns/1.0">
+            xmlns:gap = "http://phonegap.com/ns/1.0"
+            xmlns:android="http://schemas.android.com/apk/res/android">
 
     <name>Hello World</name>
 
@@ -19,7 +20,10 @@
     <content src="index.html" />
 
     <!-- Customize your app and platform with the preference element. -->
-    <preference name="DisallowOverscroll"         value="true" />
+	<!-- VERY IMPORTANT -->
+    <preference name="Fullscreen" value="true" />
+	<!-- <preference name="Orientation" value="portrait" /> -->
+    <!-- <preference name="DisallowOverscroll"         value="true" /> -->
 
     <!-- Define a specific version of PhoneGap to build into your app. -->
     <!-- <preference name="phonegap-version"       value="cli-6.0.0" /> -->
@@ -41,6 +45,11 @@
     <!--<plugin name="cordova-plugin-vibration"           source="npm" spec="~2.1.5" />-->
 
     <!-- Define app icon and splashscreen for each platform. -->
+        <edit-config file="AndroidManifest.xml" mode="merge"
+                 target="/manifest/application/activity">
+        <activity android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+    </edit-config>
+    <preference name="SplashScreenDelay" value="0"/>
     <platform name="android">
         <icon   src="www/res/icon/android/drawable-ldpi-icon.png"               density="ldpi" />
         <icon   src="www/res/icon/android/drawable-mdpi-icon.png"               density="mdpi" />
