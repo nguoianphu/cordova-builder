@@ -6,10 +6,9 @@ cd www
 
 echo "Adding Platforms"
 cordova platform add android
-# cordova platforms ls
+cordova platforms ls
 
 echo "Adding Plugins"
-cordova plugin add cordova-plugin-whitelist
 cordova plugin ls
 
 echo "Building apk for Android"
@@ -19,5 +18,3 @@ echo "Built the following apk(s):"
 ls -la $TRAVIS_BUILD_DIR/platforms/android/app/build/outputs/apk/debug
 cd ..
 # cd $TRAVIS_BUILD_DIR
-cp -R $TRAVIS_BUILD_DIR/platforms/android/app/build/outputs/apk/debug/* $TRAVIS_BUILD_DIR/
-ls -la $TRAVIS_BUILD_DIR/

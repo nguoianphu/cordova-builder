@@ -23,8 +23,8 @@ https://docs.travis-ci.com/user/tutorial/
 Edit the values in ```.travis.yml``` if you want to upgrade Android SDK
 
 ```
-  - ANDROID_VERSION=26.0.2
-  - BUILD_TOOLS_VERSION=26.0.2
+  - ANDROID_VERSION=28.0.3
+  - BUILD_TOOLS_VERSION=28.0.3
 ```
 
 ### Github Release deployment
