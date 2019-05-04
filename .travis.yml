@@ -80,7 +80,6 @@ deploy:
   api_key:
     secure: $YOUR_API_KEY_ENCRYPTED
   file: "$TRAVIS_BUILD_DIR/${APK_NAME// /}.apk"
-Ä
   skip_cleanup: true
   on:
     all_branches: true
