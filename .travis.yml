@@ -1,9 +1,10 @@
 env:
   global:
   - JAVA_HOME=/usr/lib/jvm/java-8-oracle
-  - ANDROID_VERSION=26.0.2
-  - BUILD_TOOLS_VERSION=26.0.2
+  - ANDROID_VERSION=28.0.3
+  - BUILD_TOOLS_VERSION=28.0.3
   - NODEJS=10
+  - CORDOVA_CLI=latest
 matrix:
   include:
   - os: linux
@@ -51,7 +52,7 @@ before_install:
 - export LANG=en_US.UTF-8
 - export CHROME_BIN=google-chrome
 - nvm install $NODEJS
-- npm install -g cordova
+- npm install -g cordova@$CORDOVA_CLI
 - mkdir "$ANDROID_HOME/licenses" || true
 - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
 - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
@@ -79,6 +80,7 @@ deploy:
   api_key:
     secure: $YOUR_API_KEY_ENCRYPTED
   file: "$TRAVIS_BUILD_DIR/${APK_NAME// /}.apk"
+Ä
   skip_cleanup: true
   on:
     all_branches: true
