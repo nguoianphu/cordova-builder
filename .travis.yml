@@ -28,7 +28,6 @@ matrix:
         - oracle-java8-set-default
         - jq
         - gradle
-        - google-chrome-stable
     licenses:
     - android-sdk-preview-license-.+
     - android-sdk-license-.+
