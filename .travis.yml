@@ -22,8 +22,7 @@ matrix:
       - extra-android-m2repository
     addons:
       apt:
-        sources:
-        - google-chrome
+        chrome: stable
         packages:
         - oracle-java8-installer
         - oracle-java8-set-default
