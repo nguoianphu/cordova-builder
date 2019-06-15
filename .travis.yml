@@ -2,8 +2,8 @@ jdk: oraclejdk8
 env:
   global:
   - JAVA_HOME=/usr/lib/jvm/java-8-oracle
-  - ANDROID_VERSION=28.0.3
-  - BUILD_TOOLS_VERSION=28.0.3
+  - ANDROID_VERSION=28 # Android 9 (API level 28)
+  - BUILD_TOOLS_VERSION=29.0.0
   - NODEJS=10
   - CORDOVA_CLI=latest
 matrix:
