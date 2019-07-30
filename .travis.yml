@@ -5,7 +5,7 @@ env:
   - ANDROID_VERSION=28 # Android 9 (API level 28)
   - BUILD_TOOLS_VERSION=29.0.0
   - NODEJS=10
-  - CORDOVA_CLI=latest
+  - CORDOVA_CLI=latest # latest cordova version
 matrix:
   include:
   - os: linux
