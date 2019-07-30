@@ -5,6 +5,19 @@ set -e
 echo "Don't print all commands"
 set +x
 
+echo "Travis CI set up"
+rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+rm -f  $HOME/.gradle/caches/transforms-1/transforms-1.lock
+rm -rf $HOME/.gradle/caches/3.5/fileHashes/
+rm -rf $HOME/.gradle/caches/*/plugin-resolution/
+export LANG=en_US.UTF-8
+export CHROME_BIN=google-chrome
+nvm install $NODEJS
+npm install -g cordova@$CORDOVA_CLI
+mkdir "$ANDROID_HOME/licenses" || true
+echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+yes | sdkmanager "platforms;android-27"
 
 echo "Remove the default www and replace it by your zipped"
 rm -rf www | true
