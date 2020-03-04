@@ -70,7 +70,7 @@ before_deploy:
   - cp $TRAVIS_BUILD_DIR/app-release.apk $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
 deploy:
   provider: releases
-  token:
+  api_key:
     secure: $YOUR_API_KEY_ENCRYPTED
   file:
     - "$TRAVIS_BUILD_DIR/${APK_NAME// /}.apk"
