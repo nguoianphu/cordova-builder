@@ -98,3 +98,6 @@ git push origin password
 
 - https://github.com/samlsso/Calc
 - https://docs.travis-ci.com
+- https://docs.travis-ci.com/user/build-stages/deploy-github-releases/
+- https://github.com/travis-ci/build-stages-demo/blob/deploy-github-releases/.travis.yml
+
