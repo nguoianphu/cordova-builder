@@ -70,10 +70,8 @@ before_deploy:
   - cp $TRAVIS_BUILD_DIR/app-release.apk $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
 deploy:
   provider: releases
-  user:
-    secure: $YOUR_USER_ENCRYPTED
-  password:
-    secure: $YOUR_PASSWORD_ENCRYPTED
+  api_key:
+    secure: $YOUR_API_KEY_ENCRYPTED
   file:
     - "$TRAVIS_BUILD_DIR/${APK_NAME// /}.apk"
     - "$TRAVIS_BUILD_DIR/keys.zip"
