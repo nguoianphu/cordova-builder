@@ -65,6 +65,9 @@ before_deploy:
   - export APK_NAME=${APP_NAME}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}
   - export APK_NAME=${APK_NAME// /}
   - export TRAVIS_TAG=${TRAVIS_TAG:-${APK_NAME}}
+  # Set up git user name and tag this commit
+  - git config --local user.name "nguoianphu"
+  - git config --local user.email "nguoianphu@gmail.com"  
   - git tag ${TRAVIS_TAG// /}
   - git tag -l
   - cp $TRAVIS_BUILD_DIR/app-release.apk $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
