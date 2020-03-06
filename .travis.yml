@@ -76,6 +76,5 @@ deploy:
     - "$TRAVIS_BUILD_DIR/${APK_NAME// /}.apk"
     - "$TRAVIS_BUILD_DIR/keys.zip"
   skip_cleanup: true
-  all_branches: true
   on:
-	tags: true
+	all_branches: true
