@@ -77,5 +77,4 @@ deploy:
     - "$TRAVIS_BUILD_DIR/keys.zip"
   skip_cleanup: true
   on:
-	all_branches: true
-	
+    all_branches: true
