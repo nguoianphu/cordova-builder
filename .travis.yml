@@ -60,8 +60,8 @@ script:
 before_deploy:
 - export DATE=$(date +'DATE_%Y_%m_%d_%H%M%S')
 - export GIT_COMMIT=COMMIT_$(git log --format=%h -1)
-  - export APP_NAME=$(cat www/config.xml | grep \<name\> | cut -d '>' -f2 | cut -d '<' -f1)
-  - export APP_VERSION_CURRENT=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f4)
+- export APP_NAME=$(cat www/config.xml | grep \<name\> | cut -d '>' -f2 | cut -d '<' -f1)
+- export APP_VERSION_CURRENT=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f4)
 - export APK_NAME=${APP_NAME}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}
 - export APK_NAME=${APK_NAME// /}
 - export TRAVIS_TAG=${TRAVIS_TAG:-${APK_NAME}}
