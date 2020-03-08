@@ -1,8 +1,9 @@
+jdk: oraclejdk8
 env:
   global:
   - JAVA_HOME=/usr/lib/jvm/java-8-oracle
-  - ANDROID_VERSION=28.0.3
-  - BUILD_TOOLS_VERSION=28.0.3
+  - ANDROID_VERSION=28 # Android 9 (API level 28)
+  - BUILD_TOOLS_VERSION=29.0.0
   - NODEJS=10
   - CORDOVA_CLI=latest
 matrix:
@@ -22,15 +23,12 @@ matrix:
       - extra-android-m2repository
     addons:
       apt:
-        sources:
-        - sourceline: deb http://dl.google.com/linux/chrome/deb/ stable main
-          key_url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+        chrome: stable
         packages:
         - oracle-java8-installer
         - oracle-java8-set-default
         - jq
         - gradle
-        - google-chrome-stable
     licenses:
     - android-sdk-preview-license-.+
     - android-sdk-license-.+
@@ -62,18 +60,14 @@ script:
 before_deploy:
 - export DATE=$(date +'DATE_%Y_%m_%d_%H%M%S')
 - export GIT_COMMIT=COMMIT_$(git log --format=%h -1)
-- export APP_NAME=$(cat www/config.xml | grep \<name\> | cut -d '>' -f2 | cut -d '<'
-  -f1)
-- export APP_VERSION_CURRENT=$(cat www/config.xml | grep widget | grep id | grep version
-  | cut -d '"' -f4)
+  - export APP_NAME=$(cat www/config.xml | grep \<name\> | cut -d '>' -f2 | cut -d '<' -f1)
+  - export APP_VERSION_CURRENT=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f4)
 - export APK_NAME=${APP_NAME}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}
 - export APK_NAME=${APK_NAME// /}
 - export TRAVIS_TAG=${TRAVIS_TAG:-${APK_NAME}}
 - git tag ${TRAVIS_TAG// /}
 - git tag -l
-- cp $TRAVIS_BUILD_DIR/platforms/android/app/build/outputs/apk/debug/app-debug.apk
-  $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
-- ls -la $TRAVIS_BUILD_DIR
+  - cp $TRAVIS_BUILD_DIR/app-debug.apk $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
 deploy:
   provider: releases
   api_key:
