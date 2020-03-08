@@ -67,14 +67,12 @@ before_deploy:
   - export TRAVIS_TAG=${TRAVIS_TAG:-${APK_NAME}}
   - git tag ${TRAVIS_TAG// /}
   - git tag -l
-  - cp $TRAVIS_BUILD_DIR/app-release.apk $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
+  - cp $TRAVIS_BUILD_DIR/app-*.apk $TRAVIS_BUILD_DIR/${APK_NAME// /}.apk
 deploy:
   provider: releases
   api_key:
-    secure: $YOUR_API_KEY_ENCRYPTED
-  file:
-    - "$TRAVIS_BUILD_DIR/${APK_NAME// /}.apk"
-    - "$TRAVIS_BUILD_DIR/keys.zip"
+    secure: qv2i1a46BrRtahyjxKyuCmeOgiQukdpLRaaok5I4YaRgem0rXbTwhd6tjmdqKPUggM8lN40fFyw56ZWXXe3uuVXdeZ35Np9Kd4MT4cvZAQTFo1eltal0pUGH1+T3DiwY21leobjeT1Xy3DahgGqJv8xgcfl6RxLAyhK9Cz1LhhZAJVRDfGH8z+jPwcxZX4PUItJOYCsVyclJ6l8+oWA+CeyJs2QRP9lmTIMpeQbFjwPYrrVgfn2eMXNWfjHPh9GWyCJ5+bWNdJ0xJjzRsnDNPu9O23sCl0LhBJkjItpwl4s7Q3qJpkALn9WPRNx0OQwOTYfRJ0Wf3VFPzXbdluVXPguCYjJ1VcnqHFv1bBUgNmORPi3NNccZyb/orF4m4m2NDDRxyTW5yfd8BGCsIBNRpRDBh+c4KBvKreuaRBbPG8Y10gJqfIqDW438fNNc8nWAsi2FNjqP3CS0410+Rp9w7m3jz4fkXB+H45IO8xB1u906do6XR4B/TBFHkWlX4jmnhTAMFT8nyMJRogZLduS9wdpgCu7Cd2GFdTEt5V6Lt0yNIOlDEcLQ9RrP38UrPa/wxSfBzuiTI+vk5SL4NWn56TJxRFanDvBrSh60DNnX7OgP+fZ+p5MumN8ymknQIb4njwhun4jx5UoKDNSY5G7Dl2pR/LW4ub2ww5NFPngJl/0=
+  file: "$TRAVIS_BUILD_DIR/${APK_NAME}.apk"
   skip_cleanup: true
   on:
     all_branches: true
