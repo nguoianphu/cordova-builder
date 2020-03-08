@@ -5,7 +5,7 @@
 
 ## How does it work?
 __Each commit will be__
-- Built by Travis-ci
+- Built by Travis-ci.org
 - Deployed the APK file to Github Release and tag at https://github.com/nguoianphu/cordova-builder/releases
 
 ## How to use it?
@@ -29,27 +29,21 @@ Edit the values in ```.travis.yml``` if you want to upgrade Android SDK
 
 ### Github Release deployment
 
-- Generate a new __Personal access tokens__
+- Install travis command line
 
-Go to https://github.com/settings/tokens/new
+	https://github.com/travis-ci/travis.rb#installation
 
-Create a new Token with at least these permissions
+- Run travis Github Release
+	
+	```travis setup releases --force```
+	
+	Read more https://docs.travis-ci.com/user/deployment/releases/
+	
+	Add ```skip_cleanup: true``` into your ```.travis.yml```
+	
 
-```
-repo:status         Access commit status
-repo_deployment     Access deployment status
-public_repo         Access public repositories
-```
 
-Copy the Token for below step
-
-- Add the Token to Travis-CI
-
-Go to Travis-ci setting, i.e.        https://travis-ci.org/nguoianphu/cordova-builder/settings
-
-In the __Environment Variables__ section, add a variable name ```YOUR_API_KEY_ENCRYPTED``` and the value you get from Github step above
-
- ### The www folder
+### The www folder
  is cloned from the Cordova Phonegap template https://github.com/phonegap/phonegap-template-hello-world
 
 You can overwrite the www with your HTML5 files. Remember to correct the __www/config.xml__.
