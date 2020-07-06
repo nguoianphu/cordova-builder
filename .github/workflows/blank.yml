@@ -39,6 +39,6 @@ jobs:
         echo "Building apk for Android"
         cordova build android
         echo "Built the following apk:"
-        cp -R $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/debug/* $TRAVIS_BUILD_DIR/
-        cd $HOME
+        cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/debug/* $GITHUB_WORKSPACE/
+        cd $GITHUB_WORKSPACE
         ls -la
