@@ -57,9 +57,9 @@ jobs:
 
     - name: Generate and sign Java keytool
       env:
-       MY_ZIP_PASSWORD: ${{ secrets.MY_ZIP_PASSWORD }}	
+       MY_ZIP_PASSWORD: ${{ secrets.MY_ZIP_PASSWORD }}
+       BUILD_TOOLS: '30.0.0'
       run: |
-        ls -la $ANDROID_SDK_ROOT/build-tools/
         cd $GITHUB_WORKSPACE
         echo "Signing our apk"
         mkdir -p keys
@@ -81,12 +81,13 @@ jobs:
             -file $GITHUB_WORKSPACE/keys/my-android-release-upload-certificat.pem
         echo "Sign the APK with the key we just created"
 
+        cd $ANDROID_SDK_ROOT/build-tools/$BUILD_TOOLS
         echo "Align the unsigned APK using zipalign"
-        zipalign -v 4 \
+        ./zipalign -v 4 \
             $GITHUB_WORKSPACE/app-release-unsigned.apk \
             $GITHUB_WORKSPACE/app-release-unsigned-aligned.apk
         echo "Sign your APK with your private key using apksigner"
-        apksigner sign \
+        1./apksigner sign \
             --ks $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
             --ks-key-alias my-android-release-key \
             --ks-pass pass:${MY_ZIP_PASSWORD} \
@@ -97,7 +98,7 @@ jobs:
                 to confirm that an APK's signature \
                 will be verified successfully \
                 on all versions of the Android platform supported by the APK"
-        apksigner verify --verbose --print-certs $GITHUB_WORKSPACE/app-release.apk
+        ./apksigner verify --verbose --print-certs $GITHUB_WORKSPACE/app-release.apk
         cd $GITHUB_WORKSPACE/
         ls -la
         echo "zip key and certificate with password"
