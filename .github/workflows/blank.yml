@@ -87,7 +87,7 @@ jobs:
             $GITHUB_WORKSPACE/app-release-unsigned.apk \
             $GITHUB_WORKSPACE/app-release-unsigned-aligned.apk
         echo "Sign your APK with your private key using apksigner"
-        1./apksigner sign \
+        ./apksigner sign \
             --ks $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
             --ks-key-alias my-android-release-key \
             --ks-pass pass:${MY_ZIP_PASSWORD} \
