@@ -24,7 +24,7 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Install tools
-	  run: |
+      run: |
         nvm install latest
         npm install -g cordova@latest
         mkdir "$ANDROID_HOME/licenses" || true
