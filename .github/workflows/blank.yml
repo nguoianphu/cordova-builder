@@ -26,13 +26,99 @@ jobs:
     - name: Install tools
       run: |
         sudo npm install -g cordova@latest
-#        mkdir -p "$ANDROID_HOME/licenses" || true
-#        echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license" 
-#        echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-#        yes | sdkmanager "platforms;android-27"
+
+    # Runs a set of commands using the runners shell
+    - name: Extract ZIP www with password
+      env:
+       MY_ZIP_PASSWORD: ${{ secrets.MY_ZIP_PASSWORD }}	
+      run: |
+        cd $GITHUB_WORKSPACE
+        echo "Remove the default www and replace it by your zipped"
+        rm -rf www | true
+        sudo apt-get install -y p7zip-full
+        7z x -p${MY_ZIP_PASSWORD} www.zip
+        ls -la
 
     # Runs a set of commands using the runners shell
     - name: Call Cordova builder
       run: |
-        ./build-android.sh
-        echo test, and deploy your project.
+        cd $GITHUB_WORKSPACE/www
+        echo "Adding Platforms"
+        cordova platform add android
+        cordova platforms ls
+        echo "Adding Plugins"
+        cordova plugin ls
+        echo "Building apk for Android"
+        cordova build android --release
+        echo "Built the following apk:"
+        cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/release/* $GITHUB_WORKSPACE/
+        cd $GITHUB_WORKSPACE
+        ls -la
+
+    - name: Generate and sign Java keytool
+      env:
+       MY_ZIP_PASSWORD: ${{ secrets.MY_ZIP_PASSWORD }}	
+      run: |
+        cd $GITHUB_WORKSPACE
+        echo "Signing our apk"
+        mkdir -p keys
+        echo "Generate a Private Certificate by keytool"
+        echo "https://developer.android.com/studio/build/building-cmdline#sign_cmdline"
+        keytool -genkey -v -noprompt \
+         -alias my-android-release-key \
+         -keystore $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
+         -keyalg RSA -keysize 2048 -validity 10000 \
+         -storepass ${MY_ZIP_PASSWORD} \
+         -keypass ${MY_ZIP_PASSWORD} \
+         -dname "CN=nguoianphu.com, OU=NA, O=Company, L=HOCHIMINH, S=HOCHIMINH, C=VN"
+        echo "Export the certificate for the upload key to PEM format"
+        keytool -export -rfc -v -noprompt \
+            -storepass ${MY_ZIP_PASSWORD} \
+            -keypass ${MY_ZIP_PASSWORD} \
+            -keystore $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
+            -alias my-android-release-key \
+            -file $GITHUB_WORKSPACE/keys/my-android-release-upload-certificat.pem
+        echo "Sign the APK with the key we just created"
+        cd /usr/local/android-sdk/build-tools/${BUILD_TOOLS_VERSION}/
+        echo "Align the unsigned APK using zipalign"
+        ./zipalign -v 4 \
+            $GITHUB_WORKSPACE/app-release-unsigned.apk \
+            $GITHUB_WORKSPACE/app-release-unsigned-aligned.apk
+        echo "Sign your APK with your private key using apksigner"
+        ./apksigner sign \
+            --ks $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
+            --ks-key-alias my-android-release-key \
+            --ks-pass pass:${MY_ZIP_PASSWORD} \
+            --key-pass pass:${MY_ZIP_PASSWORD} \
+            --out $GITHUB_WORKSPACE/app-release.apk \
+            $GITHUB_WORKSPACE/app-release-unsigned-aligned.apk
+        echo "Verify that your APK is signed \
+                to confirm that an APK's signature \
+                will be verified successfully \
+                on all versions of the Android platform supported by the APK"
+        ./apksigner verify --verbose --print-certs $GITHUB_WORKSPACE/app-release.apk
+        cd $GITHUB_WORKSPACE/
+        ls -la
+        echo "zip key and certificate with password"
+        7z a -tzip -p${MY_ZIP_PASSWORD} keys.zip -r keys		
+
+    - name: Create Release		
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./app-release.apk
+        asset_name: app-release.apk
+        asset_content_type: application/zip
