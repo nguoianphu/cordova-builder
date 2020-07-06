@@ -59,9 +59,9 @@ jobs:
       env:
        MY_ZIP_PASSWORD: ${{ secrets.MY_ZIP_PASSWORD }}	
       run: |
-        echo $ANDROID_BUILD_TOOLS
-        echo $ANDROID_SDK_ROOT
-        ls -la /usr/local/android-sdk/build-tools/*
+        echo ANDROID_BUILD_TOOLS=$ANDROID_BUILD_TOOLS
+        echo ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT
+        ls -la /usr/local/android-sdk/build-tools/ || true
         cd $GITHUB_WORKSPACE
         echo "Signing our apk"
         mkdir -p keys
