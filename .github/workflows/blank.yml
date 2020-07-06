@@ -30,7 +30,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Call Cordova builder
       run: |
-        cd $HOME/www
+        cd $GITHUB_WORKSPACE/www
         echo "Adding Platforms"
         cordova platform add android
         cordova platforms ls
@@ -39,6 +39,6 @@ jobs:
         echo "Building apk for Android"
         cordova build android
         echo "Built the following apk:"
-        cp -R $HOME/platforms/android/app/build/outputs/apk/debug/* $TRAVIS_BUILD_DIR/
+        cp -R $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/debug/* $TRAVIS_BUILD_DIR/
         cd $HOME
         ls -la
