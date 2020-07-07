@@ -42,6 +42,8 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Call Cordova builder
       run: |
+        mkdir -p $GITHUB_WORKSPACE/artifact/
+        mkdir -p $GITHUB_WORKSPACE/keys/
         cd $GITHUB_WORKSPACE/www
         echo "Adding Platforms"
         cordova platform add android
@@ -51,9 +53,8 @@ jobs:
         echo "Building apk for Android"
         cordova build android --release
         echo "Built the following apk:"
-        cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/release/* $GITHUB_WORKSPACE/
-        cd $GITHUB_WORKSPACE
-        ls -la
+        cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/release/* $GITHUB_WORKSPACE/artifact/
+        ls -la $GITHUB_WORKSPACE/artifact/
 
     - name: Generate and sign Java keytool
       env:
@@ -84,25 +85,25 @@ jobs:
         cd $ANDROID_SDK_ROOT/build-tools/$BUILD_TOOLS
         echo "Align the unsigned APK using zipalign"
         ./zipalign -v 4 \
-            $GITHUB_WORKSPACE/app-release-unsigned.apk \
-            $GITHUB_WORKSPACE/app-release-unsigned-aligned.apk
+            $GITHUB_WORKSPACE/artifact/app-release-unsigned.apk \
+            $GITHUB_WORKSPACE/artifact/app-release-unsigned-aligned.apk
         echo "Sign your APK with your private key using apksigner"
         ./apksigner sign \
             --ks $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
             --ks-key-alias my-android-release-key \
             --ks-pass pass:${MY_ZIP_PASSWORD} \
             --key-pass pass:${MY_ZIP_PASSWORD} \
-            --out $GITHUB_WORKSPACE/app-release.apk \
-            $GITHUB_WORKSPACE/app-release-unsigned-aligned.apk
+            --out $GITHUB_WORKSPACE/artifact/app-release.apk \
+            $GITHUB_WORKSPACE/artifact/app-release-unsigned-aligned.apk
         echo "Verify that your APK is signed \
                 to confirm that an APK's signature \
                 will be verified successfully \
                 on all versions of the Android platform supported by the APK"
-        ./apksigner verify --verbose --print-certs $GITHUB_WORKSPACE/app-release.apk
+        ./apksigner verify --verbose --print-certs $GITHUB_WORKSPACE/artifact/app-release.apk
         cd $GITHUB_WORKSPACE/
-        ls -la
+        ls -la artifact
         echo "zip key and certificate with password"
-        7z a -tzip -p${MY_ZIP_PASSWORD} keys.zip -r keys		
+        7z a -tzip -p${MY_ZIP_PASSWORD} artifact/keys.zip -r keys		
 
     - name: Create Release		
       id: create_release
@@ -122,7 +123,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        file: |
-         ./app-release.apk
-         ./keys.zip
+        path: ${{ github.workspace }}/artifact/**/*
         asset_content_type: application/zip
