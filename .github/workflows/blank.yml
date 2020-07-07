@@ -26,6 +26,7 @@ jobs:
     - name: Install tools
       run: |
         sudo npm install -g cordova@latest
+        export GIT_COMMIT=$(git log --format=%h -1)
 
     # Runs a set of commands using the runners shell
     - name: Extract ZIP www with password
@@ -110,7 +111,6 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GIT_COMMIT: $(git log --format=%h -1)
       with:
         tag_name: ${{ github.ref }}_${GIT_COMMIT}
         release_name: Release ${{ github.ref }} ${GIT_COMMIT}
