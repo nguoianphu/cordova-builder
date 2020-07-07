@@ -27,6 +27,7 @@ jobs:
       run: |
         sudo npm install -g cordova@latest
         export GIT_COMMIT=$(git log --format=%h -1)
+        echo "::set-output name=GIT_COMMIT::$GIT_COMMIT"
 
     # Runs a set of commands using the runners shell
     - name: Extract ZIP www with password
@@ -112,8 +113,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}_${{ GIT_COMMIT }}
-        release_name: Release ${{ github.ref }} ${{ GIT_COMMIT }}
+        tag_name: ${{ github.ref }}_${GIT_COMMIT}
+        release_name: Release ${{ github.ref }} ${GIT_COMMIT}
         draft: false
         prerelease: false
     - name: Upload Release Asset
