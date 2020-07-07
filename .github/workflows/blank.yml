@@ -112,8 +112,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}_${GIT_COMMIT}
-        release_name: Release ${{ github.ref }} ${GIT_COMMIT}
+        tag_name: ${{ github.ref }}_$GIT_COMMIT
+        release_name: Release ${{ github.ref }} $GIT_COMMIT
         draft: false
         prerelease: false
     - name: Upload Release Asset
