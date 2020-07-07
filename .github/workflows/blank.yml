@@ -58,7 +58,7 @@ jobs:
     - name: Generate and sign Java keytool
       env:
        MY_ZIP_PASSWORD: ${{ secrets.MY_ZIP_PASSWORD }}
-       BUILD_TOOLS: '30.0.0'
+       BUILD_TOOLS: '29.0.3'
       run: |
         cd $GITHUB_WORKSPACE
         echo "Signing our apk"
