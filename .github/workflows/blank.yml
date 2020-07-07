@@ -109,9 +109,11 @@ jobs:
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+       export GIT_COMMIT=$(git log --format=%h -1)
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: ${{ github.ref }}_${GIT_COMMIT}
+        release_name: Release ${{ github.ref }} ${GIT_COMMIT}
         draft: false
         prerelease: false
     - name: Upload Release Asset
