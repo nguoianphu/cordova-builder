@@ -1,7 +1,9 @@
 # Cordova builder
 # on the cloud with Github and Travis-CI
 
-[![Build Status](https://travis-ci.org/nguoianphu/cordova-builder.svg?branch=master)](https://travis-ci.org/nguoianphu/cordova-builder)
+Github Actions ![CI](https://github.com/nguoianphu/cordova-builder/workflows/CI/badge.svg?branch=master)
+
+Travis CI      [![Build Status](https://travis-ci.org/nguoianphu/cordova-builder.svg?branch=master)](https://travis-ci.org/nguoianphu/cordova-builder)
 
 ## How does it work?
 __Each commit will be__
