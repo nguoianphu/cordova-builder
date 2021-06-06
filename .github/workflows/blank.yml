@@ -130,7 +130,7 @@ jobs:
         tag_name: ${{env.TAG}}
         files: |
           artifact/keys.zip
-          app-release.apk
+          artifact/app-release.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
