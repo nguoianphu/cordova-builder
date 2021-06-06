@@ -61,13 +61,13 @@ jobs:
         export TAG=${TAG:-${APK_NAME}}
         git tag ${TAG// /}
         git tag -l
+        echo "TAG=$TAG" >> $GITHUB_ENV
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: $TAG
+        tag_name: ${{env.TAG}}
         files: |
           app-debug.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TAG: ${{env.TAG}}
         
