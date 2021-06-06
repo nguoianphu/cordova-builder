@@ -3,11 +3,12 @@
 
 Github Actions ![CI](https://github.com/nguoianphu/cordova-builder/workflows/CI/badge.svg?branch=master)
 
-Travis CI      [![Build Status](https://travis-ci.org/nguoianphu/cordova-builder.svg?branch=master)](https://travis-ci.org/nguoianphu/cordova-builder)
+Travis CI      [![Build Status](https://travis-ci.com/nguoianphu/cordova-builder.svg?branch=master)](https://travis-ci.com/nguoianphu/cordova-builder)
 
 ## How does it work?
 __Each commit will be__
-- Built by Travis-ci.org
+- Built & deployed by Github Action
+- Built by Travis-ci.com. Can be deployed back to Gihub also but skip.
 - Deployed the APK file to Github Release and tag at https://github.com/nguoianphu/cordova-builder/releases
 
 ## How to use it?
@@ -33,16 +34,16 @@ Edit the values in ```.travis.yml``` if you want to upgrade Android SDK
 
 - Install travis command line
 
-	https://github.com/travis-ci/travis.rb#installation
+    https://github.com/travis-ci/travis.rb#installation
 
 - Run travis Github Release
-	
-	```travis setup releases --force```
-	
-	Read more https://docs.travis-ci.com/user/deployment/releases/
-	
-	Add ```skip_cleanup: true``` into your ```.travis.yml```
-	
+    
+    ```travis setup releases --force```
+    
+    Read more https://docs.travis-ci.com/user/deployment/releases/
+    
+    Add ```skip_cleanup: true``` into your ```.travis.yml```
+    
 
 
 ### The www folder
@@ -75,9 +76,11 @@ Put the ```www.zip``` into the repo
 
 Add the password ```MyP44ssw0rd``` to Travis-CI
 
-Go to Travis-ci setting, i.e.        https://travis-ci.org/nguoianphu/cordova-builder/settings
+Go to Travis-ci setting, i.e.        https://travis-ci.com/nguoianphu/cordova-builder/settings
 
 In the __Environment Variables__ section, add a variable name ```MY_ZIP_PASSWORD``` and the value ```MyP44ssw0rd```
+
+Github Action, go to https://github.com/nguoianphu/cordova-builder/settings/secrets/actions and add it in __Repository secrets__
 
 ```
 git add .
