@@ -22,6 +22,11 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    - name: set up JDK 8
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'
+        distribution: 'adopt'
     # Runs a single command using the runners shell
     - name: Install tools
       run: |
@@ -102,40 +107,30 @@ jobs:
         ./apksigner verify --verbose --print-certs $GITHUB_WORKSPACE/artifact/app-release.apk
         cd $GITHUB_WORKSPACE/
         ls -la artifact
-        echo "zip key and certificate with password"
-        7z a -tzip -p${MY_ZIP_PASSWORD} artifact/keys.zip -r keys		
-
-    - name: Get commit id
-      id: get_commit_id
-      shell: bash
-      run: echo ::set-output name=GIT_COMMIT::$(git log --format=%h -1)
-    - name: Create Release		
-      id: create_release
-      uses: actions/create-release@v1
+        echo "zip keys and certificates with password"
+        7z a -tzip -p${MY_ZIP_PASSWORD} artifact/keys.zip -r keys
+        
+        
+    - name: Create tag
+      run: |
+        cd $GITHUB_WORKSPACE
+        export DATE=$(date +'DATE_%Y_%m_%d_%H%M%S')
+        export GIT_COMMIT=COMMIT_$(git log --format=%h -1)
+        export APP_NAME=$(cat www/config.xml | grep \<name\> | cut -d '>' -f2 | cut -d '<' -f1)
+        export APP_VERSION_CURRENT=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f4)
+        export APK_NAME=${APP_NAME}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}
+        export APK_NAME=${APK_NAME// /}
+        export TAG=${TAG:-${APK_NAME}}
+        git tag ${TAG// /}
+        git tag -l
+        echo "TAG=$TAG" >> $GITHUB_ENV
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{env.TAG}}
+        files: |
+          artifact/keys.zip
+          app-release.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}_${{ steps.get_commit_id.outputs.GIT_COMMIT }}
-        release_name: Release ${{ github.ref }} ${{ steps.get_commit_id.outputs.GIT_COMMIT }}
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ${{ github.workspace }}/artifact/app-release.apk
-        asset_name: app-release.apk
-        asset_content_type: application/zip
-    - name: Upload Release Asset 2
-      id: upload-release-asset2
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ${{ github.workspace }}/artifact/keys.zip
-        asset_name: keys.zip
-        asset_content_type: application/zip        
+        
