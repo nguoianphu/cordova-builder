@@ -48,23 +48,25 @@ jobs:
         cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/debug/* $GITHUB_WORKSPACE/
         cd $GITHUB_WORKSPACE
         ls -la
-    - name: Create Release		
-      id: create_release
-      uses: actions/create-release@v1
+    # Runs a set of commands using the runners shell
+    - name: Create tag
+      run: |
+        cd $GITHUB_WORKSPACE
+        export DATE=$(date +'DATE_%Y_%m_%d_%H%M%S')
+        export GIT_COMMIT=COMMIT_$(git log --format=%h -1)
+        export APP_NAME=$(cat www/config.xml | grep \<name\> | cut -d '>' -f2 | cut -d '<' -f1)
+        export APP_VERSION_CURRENT=$(cat www/config.xml | grep widget | grep id | grep version | cut -d '"' -f4)
+        export APK_NAME=${APP_NAME}-${APP_VERSION_CURRENT}-${DATE}-${GIT_COMMIT}
+        export APK_NAME=${APK_NAME// /}
+        export TAG=${TAG:-${APK_NAME}}
+        git tag ${TAG// /}
+        git tag -l
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        tag_name: ${{TAG}}
+        files: |
+          app-debug.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./app-debug.apk
-        asset_name: app-debug.apk
-        asset_content_type: application/zip
