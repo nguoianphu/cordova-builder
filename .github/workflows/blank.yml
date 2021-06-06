@@ -64,8 +64,10 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{env.TAG}}
+        tag_name: $TAG
         files: |
           app-debug.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAG: ${{env.TAG}}
+        
