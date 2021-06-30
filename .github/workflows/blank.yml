@@ -112,6 +112,12 @@ jobs:
                 will be verified successfully \
                 on all versions of the Android platform supported by the APK"
         ./apksigner verify --verbose --print-certs $GITHUB_WORKSPACE/artifact/app-release.apk
+        echo "Sign Android App Bundle by jarsigner"
+        echo "https://medium.com/androiddevelopers/building-your-first-app-bundle-bbcd228bf631"
+        jarsigner -storepass ${MY_ZIP_PASSWORD} \
+            -keypass ${MY_ZIP_PASSWORD} \
+            -keystore $GITHUB_WORKSPACE/keys/my-android-release-key.keystore \
+             $GITHUB_WORKSPACE/artifact/app-release.aab my-android-release-key        
         cd $GITHUB_WORKSPACE/
         ls -la artifact
         echo "zip keys and certificates with password"
