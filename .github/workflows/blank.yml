@@ -76,7 +76,7 @@ jobs:
         keytool -genkeypair -v -noprompt \
          -storetype PKCS12 \
          -alias my-android-release-key \
-         -keystore $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
+         -keystore $GITHUB_WORKSPACE/keys/my-android-release-key.keystore \
          -keyalg RSA -keysize 2048 -validity 10000 \
          -storepass ${MY_ZIP_PASSWORD} \
          -keypass ${MY_ZIP_PASSWORD} \
@@ -85,7 +85,7 @@ jobs:
         keytool -export -rfc -v -noprompt \
             -storepass ${MY_ZIP_PASSWORD} \
             -keypass ${MY_ZIP_PASSWORD} \
-            -keystore $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
+            -keystore $GITHUB_WORKSPACE/keys/my-android-release-key.keystore \
             -alias my-android-release-key \
             -file $GITHUB_WORKSPACE/keys/my-android-release-upload-certificat.pem
         echo "Sign the APK with the key we just created"
@@ -96,7 +96,7 @@ jobs:
             $GITHUB_WORKSPACE/artifact/app-release-unsigned-aligned.apk
         echo "Sign your APK with your private key using apksigner"
         ./apksigner sign \
-            --ks $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
+            --ks $GITHUB_WORKSPACE/keys/my-android-release-key.keystore \
             --ks-key-alias my-android-release-key \
             --ks-pass pass:${MY_ZIP_PASSWORD} \
             --key-pass pass:${MY_ZIP_PASSWORD} \
