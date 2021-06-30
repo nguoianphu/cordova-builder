@@ -68,10 +68,13 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         echo "Signing our apk"
+        echo "https://ionicframework.com/docs/deployment/play-store"
+        echo "https://reactnative.dev/docs/signed-apk-android"
         mkdir -p keys
         echo "Generate a Private Certificate by keytool"
         echo "https://developer.android.com/studio/build/building-cmdline#sign_cmdline"
-        keytool -genkey -v -noprompt \
+        keytool -genkeypair -v -noprompt \
+         -storetype PKCS12 \
          -alias my-android-release-key \
          -keystore $GITHUB_WORKSPACE/keys/my-android-release-key.jks \
          -keyalg RSA -keysize 2048 -validity 10000 \
@@ -86,7 +89,6 @@ jobs:
             -alias my-android-release-key \
             -file $GITHUB_WORKSPACE/keys/my-android-release-upload-certificat.pem
         echo "Sign the APK with the key we just created"
-
         cd $ANDROID_SDK_ROOT/build-tools/$BUILD_TOOLS
         echo "Align the unsigned APK using zipalign"
         ./zipalign -v 4 \
