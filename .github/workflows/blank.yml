@@ -63,6 +63,7 @@ jobs:
         echo "Built the following apk:"
         cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/debug/* $GITHUB_WORKSPACE/artifact/
         cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/release/* $GITHUB_WORKSPACE/artifact/
+        cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/bundle/release/* $GITHUB_WORKSPACE/artifact/
         ls -la $GITHUB_WORKSPACE/artifact/
 
     - name: Generate and sign Java keytool
@@ -137,7 +138,7 @@ jobs:
         tag_name: ${{env.TAG}}
         files: |
           artifact/keys.zip
-          artifact/*.apk
+          artifact/*
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
@@ -147,5 +148,5 @@ jobs:
         name: build-outputs-ubuntu
         path: |
           artifact/keys.zip
-          artifact/*.apk
+          artifact/*
           
