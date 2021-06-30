@@ -58,6 +58,8 @@ jobs:
         cordova build android --debug --verbose
         # Build for android platform in release mode
         cordova build android --release --verbose
+        # Build an Android App Bundle (.aab) file
+        cordova build android --release --verbose -- --packageType=bundle
         echo "Built the following apk:"
         cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/debug/* $GITHUB_WORKSPACE/artifact/
         cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/release/* $GITHUB_WORKSPACE/artifact/
