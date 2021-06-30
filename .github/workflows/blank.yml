@@ -50,14 +50,16 @@ jobs:
         mkdir -p $GITHUB_WORKSPACE/artifact/
         mkdir -p $GITHUB_WORKSPACE/keys/
         cd $GITHUB_WORKSPACE/www
-        echo "Adding Platforms"
+        # Add android platform to the project and remember that in config.xml & package.json.
         cordova platform add android
-        cordova platforms ls
-        echo "Adding Plugins"
-        cordova plugin ls
-        echo "Building apk for Android"
-        cordova build android --release
+        # Check to see if your system is configured for building android platform.
+        cordova requirements android
+        # Build the android and emit verbose logs.
+        cordova build android --debug --verbose
+        # Build for android platform in release mode
+        cordova build android --release --verbose
         echo "Built the following apk:"
+        cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/debug/* $GITHUB_WORKSPACE/artifact/
         cp -vR $GITHUB_WORKSPACE/platforms/android/app/build/outputs/apk/release/* $GITHUB_WORKSPACE/artifact/
         ls -la $GITHUB_WORKSPACE/artifact/
 
@@ -126,13 +128,22 @@ jobs:
         git tag ${TAG// /}
         git tag -l
         echo "TAG=$TAG" >> $GITHUB_ENV
+        
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{env.TAG}}
         files: |
           artifact/keys.zip
-          artifact/app-release.apk
+          artifact/*.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-outputs-ubuntu
+        path: |
+          artifact/keys.zip
+          artifact/*.apk
+          
